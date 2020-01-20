@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>Login/Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'login_app\css\style.css' %}">
+</head>
+<body>
+    <div class="animation-area">
+            <div class="h-100 row align-items-center">
+                <div class="d-flex justify-content-center col mb-5">
+                    <div class="border border-dark  rounded-lg p-5 text-center">
+                        <h1 class="text-spread text-dark">Register to the NotePad!</h1>
+                        <hr class="hr-white">
+
+                        <!-- Validation Check -->
+                        <div class="registration-block sibs">
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <p{% if message.tags %} class="{{ message.tags }} text-light"{% endif %}>{{ message }}</p>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+    
+                        <!-- Register Form -->
+                        <form action="/register" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <fieldset>
+                                    <label class="control-label">First Name</label>
+                                    <input class="form-control" type="text" id="first_name" name="first_name">
+                                </fieldset>
+                                <fieldset>
+                                    <label class="control-label mt-3">Last Name</label>
+                                    <input class="form-control" type="text" id="last_name" name="last_name">
+                                </fieldset>
+                                <fieldset>
+                                    <label class="control-label mt-3">Email</label>
+                                    <input class="form-control" type="email" id="email" name="email">
+                                </fieldset>
+                                <fieldset>
+                                    <label class="control-label mt-3">Password</label>
+                                    <input class="form-control" type="password" id="password" name="password">
+                                </fieldset>
+                                <fieldset>
+                                    <label class="control-label mt-3"> Confirm Password</label>
+                                    <input class="form-control" type="password" id="confirmation_password" name="confirmation_password">
+                                </fieldset>
+                                <button class="btn btn-dark mt-3" type="submit">Register Now!</button>
+                            </div>
+                        </form>
+    
+                        <a class="float-right text-dark underline" href="/">All ready have an account?</a>
+                    </div>
+                </div>
+            </div> 
+            <ul class="box-area">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

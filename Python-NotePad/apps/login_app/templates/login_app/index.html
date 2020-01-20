@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load staticfiles %}
+    <!-- <link rel="stylesheet" href="{% static 'login_app/css/Log.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'login_app\css\style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
+    <title>Lit Notes</title>
+</head>
+<body>
+    <div class="animation-area">
+        <div class="h-100 row align-items-center">
+            <div class="d-flex justify-content-center col mb-5">
+                <div class="border border-dark  rounded-lg p-5 text-center">
+                    <h1 class="text-spread text-dark">Welcome to NotePad</h1>
+                    <hr class="hr-white">
+                    <!-- Validation Check -->
+                    <div class='small'>
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <p{% if message.tags %} class="{{ message.tags }} text-light"{% endif %}>{{ message }}</p>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+
+                    <!-- Login Form -->
+                    <form action="/login" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <fieldset>
+                                <label class="control-label">Email</label>
+                                <input class="form-control" type="email" id="email" name="email">
+                            </fieldset>
+                            <fieldset>
+                                <label class="control-label mt-3">Password</label>
+                                <input class="form-control" type="password" id="password" name="password">
+                            </fieldset>
+                            <button class="btn btn-dark mt-3" type="submit">Login Now!</button>
+                        </div>
+                    </form>
+
+                    <a class="float-right text-dark underline" href="/pre_login">Need to register?</a>
+                </div>
+            </div>
+        </div> 
+        <ul class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>   
+</body>
+</html>
